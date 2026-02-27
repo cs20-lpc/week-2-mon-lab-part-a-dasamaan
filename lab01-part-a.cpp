@@ -24,26 +24,27 @@ void printFoods(string*, const unsigned);
 *******************************************************************************/
 
 int main() {
-    // variables
     string*  dynArr   = nullptr;
     unsigned userSize = 0;
 
     // get the size for the array from user
-    // validation: must not exceed 10
     do {
         cout << "Enter your desired array size: ";
         cin >> userSize;
     } while (userSize > 10);
 
-    // TODO: create the dynamic memory
+    // ✅ Allocate dynamic memory
+    dynArr = new string[userSize];
 
     // call the functions
     populate(dynArr, userSize);
     printFoods(dynArr, userSize);
 
-    // TODO: release the dynamic memory to avoid a memory leak
+    // ✅ Release dynamic memory
+    delete[] dynArr;
+    dynArr = nullptr;
 
-    // terminate
+    //Terminate
     return 0;
 }
 
@@ -61,7 +62,13 @@ int main() {
 *******************************************************************************/
 
 void populate(string* arrPtr, const unsigned ARR_SIZE) {
-    // TODO
+    // Clear leftover newline from cin
+    cin.ignore();
+
+    for (unsigned i = 0; i < ARR_SIZE; i++) {
+        cout << "\nEnter food order #" << i + 1 << ": ";
+        getline(cin, arrPtr[i]);
+    }
 }
 
 /*******************************************************************************
@@ -79,5 +86,11 @@ void populate(string* arrPtr, const unsigned ARR_SIZE) {
 *******************************************************************************/
 
 void printFoods(string* arrPtr, const unsigned ARR_SIZE) {
-    // TODO
+    for (unsigned i = 0; i < ARR_SIZE; i++) {
+        cout << "\n****************************************\n";
+        cout << "Food Order #" << i + 1 << endl;
+        cout << arrPtr[i] << endl;
+        cout << "(sent from address " << &arrPtr[i] << ")" << endl;
+        cout << "****************************************\n";
+    }
 }

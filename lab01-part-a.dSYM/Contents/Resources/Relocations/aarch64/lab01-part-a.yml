@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/davinsamaan/github-classroom/cs20-lpc/week-2-mon-lab-part-a-dasamaan/lab01-part-a'
+relocations:     []
+...
